@@ -1,0 +1,86 @@
+{
+  "name": "sticky-header",
+  "version": "0.0.0",
+  "description": "CanJS view.attr that makes elements sticky with just a simple property",
+  "homepage": "http://app-elements.github.io/sticky-header",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/app-elements/sticky-header.git"
+  },
+  "author": {
+    "name": "Juan Orozco",
+    "email": "hi@juanorozco.com",
+    "url": "juanorozco.com"
+  },
+  "scripts": {
+    "preversion": "npm test && npm run build",
+    "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
+    "postversion": "git push --tags && git checkout master && git branch -D release && git push",
+    "testee": "testee test/test.html --browsers firefox",
+    "test": "npm run lint && npm run testee",
+    "lint": "eslint ./*.js ./src/ --config",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "build": "node build.js",
+    "document": "documentjs",
+    "develop": "done-serve --static --develop --port 8080"
+  },
+  "main": "dist/cjs/sticky-header",
+  "browser": {
+    "transform": [
+      "cssify"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      "cssify"
+    ]
+  },
+  "keywords": [
+    "canjs"
+  ],
+  "system": {
+    "main": "sticky-header",
+    "configDependencies": [
+      "live-reload"
+    ],
+    "npmIgnore": [
+      "documentjs",
+      "testee",
+      "generator-donejs",
+      "donejs-cli",
+      "steal-tools"
+    ],
+    "directories": {
+      "lib": "src"
+    },
+    "npmAlgorithm": "flat",
+    "map": {
+      "chai": "chai/chai"
+    }
+  },
+  "dependencies": {
+    "can": "^2.3.26",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cssify": "^0.6.0",
+    "documentjs": "^0.4.2",
+    "done-serve": "^0.3.0-pre.0",
+    "donejs-cli": "^0.10.0-pre.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.1",
+    "funcunit": "^3.1.0-pre.1",
+    "generator-donejs": "^0.10.0-pre.0",
+    "steal": "^0.16.0",
+    "steal-mocha": "0.0.3",
+    "steal-qunit": "^0.1.1",
+    "steal-tools": "^0.16.0",
+    "testee": "^0.2.4"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "sites": {
+    "docs": {
+      "dest": "docs",
+      "parent": "sticky-header",
+      "pageConfig": {
+        "page": "docs"
+      },
+      "glob": {
+        "pattern": "src/**/*.{js,md}"
+      }
+    }
+  }
+}
